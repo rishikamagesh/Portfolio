@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rishika - Portfolio</title>
+<style>
+  /* Import Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+  /* CSS Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #6b7280;
+    font-size: 18px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    background-image: linear-gradient(to top, #0dbbc8, #0093c1, #006ab4, #003f9a, #08076e);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  a:hover,
+  a:focus {
+    color: #111827;
+    outline: none;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    backdrop-filter: saturate(180%) blur(12px);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+
+  .logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: #111827;
+    letter-spacing: -0.03em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #6b7280;
+  }
+
+  .nav-links a {
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #111827;
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus {
+    color: #111827;
+  }
+
+  .nav-links a:hover::after,
+  .nav-links a:focus::after {
+    width: 100%;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 8rem 1rem 6rem;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 3.75rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #111827;
+    margin-bottom: 1rem;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #374151;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Hero Buttons container */
+  .hero-buttons {
+    display: inline-flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary,
+  .btn-resume {
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 0.75rem 2.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: #111827;
+    color: white;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #374151;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-resume {
+    background-color: #111827;
+    color: white;
+    box-shadow: 0 6px 20px rgb(17 24 39 / 0.3);
+    border: none;
+  }
+
+  .btn-resume:hover,
+  .btn-resume:focus {
+    background-color: #374151;
+    box-shadow: 0 10px 30px rgb(55 65 81 / 0.5);
+    transform: scale(1.05);
+  }
+
+  /* Section styling with subtle background */
+  section {
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+    background-color: #f9fafb;
+    border-radius: 0.75rem;
+    margin: 3rem 0;
+    box-shadow: 0 0 12px rgb(0 0 0 / 0.05);
+  }
+
+  section:nth-of-type(even) {
+    background-color: #ffffff;
+    box-shadow: none;
+  }
+
+  section h2 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #111827;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  section p.subtitle {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  /* About Section */
+  .about-content {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #374151;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  /* Skills Section */
+  .skills-grid {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    gap: 1.75rem;
+  }
+
+  .skill-card {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.07);
+    padding: 1.25rem 1rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: #1f2937;
+    text-align: center;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    cursor: default;
+  }
+
+  .skill-card:hover,
+  .skill-card:focus {
+    box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+    transform: translateY(-6px);
+  }
+
+  /* Projects Section */
+  .projects-container {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+    padding: 1.75rem 1.5rem 2rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    outline-offset: 4px;
+  }
+
+  .project-card:hover,
+  .project-card:focus {
+    box-shadow: 0 14px 28px rgb(0 0 0 / 0.15);
+    transform: translateY(-5px);
+  }
+
+  .project-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-description {
+    color: #4b5563;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    min-height: 50px;
+  }
+
+  .project-link, .portfolio-link {
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+
+  .project-link:hover,
+  .project-link:focus,
+  .portfolio-link:hover,
+  .portfolio-link:focus {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  /* Certifications Section */
+  .certifications-container {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+  }
+
+  .cert-card {
+    background: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+    padding: 1.75rem 1.5rem 2rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    outline-offset: 4px;
+  }
+
+  .cert-card:hover,
+  .cert-card:focus {
+    box-shadow: 0 10px 28px rgb(0 0 0 / 0.15);
+    transform: translateY(-5px);
+  }
+
+  .cert-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+  }
+  .cert-issuer {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #4b5563;
+    margin-bottom: 0.75rem;
+  }
+  .cert-date {
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+
+  /* Contact Section */
+  .contact {
+    text-align: center;
+    color: #111827;
+  }
+  .contact p {
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: 1.75rem;
+  }
+  .btn-email {
+    display: inline-block;
+    background-color: #111827;
+    color: white;
+    padding: 0.85rem 2.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgb(17 24 39 / 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .btn-email:hover,
+  .btn-email:focus {
+    background-color: #374151;
+    box-shadow: 0 10px 30px rgb(55 65 81 / 0.5);
+    transform: scale(1.07);
+  }
+
+  /* Footer */
+  footer {
+
+    text-align: center;
+    font-size: 0.9rem;
+    color: #9ca3af;
+  }
+
+  /* Responsive typography */
+  @media (max-width: 640px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    section h2 {
+      font-size: 2rem;
+    }
+    .nav-links {
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+    .hero-buttons {
+      justify-content: center;
+    }
+  }
+
+  /* Focus outlines */
+  a:focus-visible,
+  button:focus-visible,
+  .cert-card:focus-visible,
+  .skill-card:focus-visible,
+  .project-card:focus-visible {
+    outline: 3px solid #111827;
+    outline-offset: 4px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav role="navigation" aria-label="Primary navigation">
+      <a href="#" class="logo" aria-label="Homepage">Rishika's Portfolio</a>
+      <div class="nav-links">
+        <a href="#about" tabindex="0">About</a>
+        <a href="#skills" tabindex="0">Skills</a>
+        <a href="#projects" tabindex="0">Projects</a>
+        <a href="#certifications" tabindex="0">Certifications</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Introduction hero section">
+    <div class="container">
+      <h1>Hi, I'm Rishika</h1>
+      <p>A passionate developer and designer skilled in a variety of programming languages and tools, crafting efficient and elegant solutions.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Contact me">Get in Touch</button>
+
+        <a href="C:/Users/rishi/Downloads/RishikaMageshkumar_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn-resume" aria-label="View My Resume">View Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" aria-label="About me section">
+    <div class="container about-content">
+      <h2>About Me</h2>
+      <p>
+        I hold a Bachelor of Computer Applications (BCA) from Stella, where I honed my skills in software development, database management, and problem-solving. My passion for technology drives me to explore new innovations, build efficient systems, and apply data-driven strategies in real-world applications.
+      </p>
+      <p>
+        Driven by continuous learning, I thrive in collaborative environments and love tackling complex projects, optimizing performance, and integrating cutting-edge technologies. I am always eager to contribute to open-source communities, adapt to emerging trends, and push boundaries in software innovation.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills" aria-label="Skills section">
+    <div class="container">
+      <h2>My Skills</h2>
+      <p class="subtitle">Technologies and tools I use frequently.</p>
+      <div class="skills-grid" role="list">
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="C programming language skill">C</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="Java programming language skill">Java</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="Python programming language skill">Python</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="HTML skill">HTML5</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="CSS skill">CSS3</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="JavaScript skill">JavaScript</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="Git skill">Git</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="UI/UX Design skill">UI/UX Design</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="Figma skill">Figma</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="Adobe Photoshop skill">Adobe Photoshop</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="React skill">React</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="Node.js skill">Node.js</div>
+        <div class="skill-card" role="listitem" tabindex="0" aria-label="Kotlin skill">Kotlin</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" aria-label="Projects section">
+    <div class="container projects-container">
+      <h2>My Projects</h2>
+      <p class="subtitle">Here are some projects I've worked on.</p>
+      <div class="projects-grid" role="list">
+        <article class="project-card" role="listitem" tabindex="0">
+          <div class="project-title">Farmify – Crop Yield Prediction</div>
+          <p class="project-description">
+              Farmify is a web-based platform built using <strong>HTML, CSS, JavaScript, Flask, Python, MySQL, and Machine Learning</strong> to enhance agricultural efficiency. It predicts <strong>crop yields</strong>, facilitates an <strong>online marketplace</strong>, provides <strong>farming recommendations</strong>, and integrates a <strong>chatbot assistant</strong> for real-time support. Using <strong>machine learning models</strong>, it generates <strong>prediction reports</strong> based on <strong>historical data and climate conditions</strong>, while the <strong>marketplace</strong> enables direct farmer-to-buyer transactions, improving profitability. The <strong>chatbot</strong> offers insights on <strong>yield predictions, market trends, and best practices</strong>, ensuring smart, data-driven farming.
+          </p>
+          <a href="link-to-your-farmify-project" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Farmify Project">View Project</a>
+        </article>
+        <article class="project-card" role="listitem" tabindex="0">
+          <div class="project-title">Portfolio</div>
+          <p class="project-description">Portfolio(Introduction about me )</p>
+          <a href="link-to-portfolio" target="_blank" rel="noopener noreferrer" class="portfolio-link" aria-label="Visit Portfolio for Project 2">Visit Portfolio</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" aria-label="Certifications section">
+    <div class="container certifications-container">
+      <h2>Certifications</h2>
+      <p class="subtitle">Here are some certifications I've earned on my journey.</p>
+      <div class="certifications-grid" role="list">
+        <article class="cert-card" role="listitem" tabindex="0" aria-label="Microsoft Certified Power BI Data Analyst Associate">
+          <div class="cert-title">Microsoft Certified: Power BI Data Analyst Associate</div>
+          <div class="cert-issuer">Microsoft</div>
+        </article>
+        <article class="cert-card" role="listitem" tabindex="0" aria-label="DBMS & MySql Zero to Hero course">
+          <div class="cert-title">DBMS & MySql Zero to Hero Course</div>
+          <div class="cert-issuer">Let's Upgrade</div>
+        </article>
+        <article class="cert-card" role="listitem" tabindex="0" aria-label="Python Zero to Hero course">
+          <div class="cert-title">Python Zero to Hero Course</div>
+          <div class="cert-issuer">Let's Upgrade</div>
+        </article>
+        <article class="cert-card" role="listitem" tabindex="0" aria-label="DCA Course (Excel, PowerPoint, Word)">
+          <div class="cert-title">DCA Course (Excel, PowerPoint, Word)</div>
+          <div class="cert-issuer">Kalaignar Institute</div>
+        </article>
+        <article class="cert-card" role="listitem" tabindex="0" aria-label="Computer Networking Basics by IBM Skills Build">
+          <div class="cert-title">Computer Networking Basics: How Computers Communicate</div>
+          <div class="cert-issuer">IBM Skills Build</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" aria-label="Contact section">
+    <div class="container contact">
+      <h2>Contact Me</h2>
+      <p>If you'd like to collaborate or reach out, I'm just an email away.</p>
+      <a href="mailto:rishikamageshkumar2655@gmail.com" class="btn-email" aria-label="Send email to Rishika">rishikamageshkumar2655@gmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    &copy; 2025 Rishika. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
+
